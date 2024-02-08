@@ -15,6 +15,9 @@ export const bindGenericError = (error: Error & any): IError => ({
 });
 
 export const handleErrorLog = (error: Error & any, loggerInstance?: Logger) => {
-  loggerInstance?.error?.(error);
+  loggerInstance?.error?.({
+    message: error?.response?.data?.message ?? error?.message ?? 'unknown',
+    ...error,
+  });
   console.error(error);
 };

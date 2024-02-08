@@ -6,6 +6,7 @@ import { loggingWinstonSettings } from '@framework/config/logging';
 import { WinstonModule } from 'nest-winston';
 import { HealthCheckModule } from '@container/ioc/healthCheck.module';
 import { registerHttp } from '@framework/config/http';
+import { HttpModule } from '@container/ioc/http.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { registerHttp } from '@framework/config/http';
     registerHttp(),
     PrismaModule,
     HealthCheckModule,
+    HttpModule,
   ],
   providers: [],
 })

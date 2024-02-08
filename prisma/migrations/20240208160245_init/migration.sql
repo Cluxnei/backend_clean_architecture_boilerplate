@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE `notifications` (
+CREATE TABLE `todos` (
     `id` VARCHAR(191) NOT NULL,
     `title` VARCHAR(191) NOT NULL,
     `completed` BOOLEAN NOT NULL DEFAULT false,

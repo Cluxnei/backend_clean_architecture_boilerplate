@@ -21,5 +21,5 @@ model Todo {
   created_at DateTime  @default(now())
   updated_at DateTime? @updatedAt
 
-  @@map("notifications")
+  @@map("todos")
 }

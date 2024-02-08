@@ -7,6 +7,7 @@ import { WinstonModule } from 'nest-winston';
 import { HealthCheckModule } from '@container/ioc/healthCheck.module';
 import { registerHttp } from '@framework/config/http';
 import { HttpModule } from '@container/ioc/http.module';
+import { MailModule } from '@container/ioc/mail.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { HttpModule } from '@container/ioc/http.module';
     PrismaModule,
     HealthCheckModule,
     HttpModule,
+    MailModule,
   ],
   providers: [],
 })

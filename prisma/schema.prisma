@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// use always cuid for ids
+// always define the table name in @@map
+// always use snake case for table and columns names
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Todo {
+  id         String    @id @default(cuid())
+  title      String
+  completed  Boolean   @default(false)
+  created_at DateTime  @default(now())
+  updated_at DateTime? @updatedAt
+
+  @@map("notifications")
+}

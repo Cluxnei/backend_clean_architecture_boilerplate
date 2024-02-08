@@ -8,7 +8,6 @@ import { loggingWinstonSettings } from '@framework/config/logging';
 import {
   setupInterceptors,
   setupPipes,
-  setupPrisma,
   setupServer,
   setupStatic,
   setupSwagger,
@@ -32,8 +31,6 @@ async function bootstrap() {
   setupPipes(app);
   logger.log('setup interceptors', 'Bootstrap');
   setupInterceptors(app);
-  logger.log('setup prisma', 'Bootstrap');
-  await setupPrisma(app);
   logger.log('setup server', 'Bootstrap');
   await setupServer(app);
   return logger;

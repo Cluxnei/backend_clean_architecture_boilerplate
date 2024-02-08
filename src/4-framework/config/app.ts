@@ -10,9 +10,8 @@ import { ValidationError } from 'class-validator';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import compression from 'compression';
+import * as compression from 'compression';
 import { envOrThrow, isLocal } from '@shared/env';
-import { PrismaService } from '@framework/database/prisma.service';
 import { LoggingInterceptor } from '@framework/interceptors/logging.interceptor';
 
 export function setupStatic(app: NestExpressApplication) {
@@ -57,11 +56,6 @@ export function setupPipes(app: INestApplication) {
 
 export function setupInterceptors(app: INestApplication) {
   app.useGlobalInterceptors(new LoggingInterceptor());
-}
-
-export async function setupPrisma(app: INestApplication) {
-  const prismaService = app.get<PrismaService>(PrismaService);
-  await prismaService.enableShutdownHooks(app);
 }
 
 export async function setupServer(app: INestApplication) {

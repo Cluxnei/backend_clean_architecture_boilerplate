@@ -8,6 +8,7 @@ import { HealthCheckModule } from '@container/ioc/healthCheck.module';
 import { registerHttp } from '@framework/config/http';
 import { HttpModule } from '@container/ioc/http.module';
 import { MailModule } from '@container/ioc/mail.module';
+import { AwsSqsModule } from '@container/ioc/awsSqs.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { MailModule } from '@container/ioc/mail.module';
     PrismaModule,
     HealthCheckModule,
     HttpModule,
+    AwsSqsModule,
     MailModule,
   ],
   providers: [],

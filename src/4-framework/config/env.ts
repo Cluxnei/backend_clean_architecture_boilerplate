@@ -16,4 +16,7 @@ export const envValidationSchema = Joi.object({
   AWS_SES_KEY: Joi.string().allow('').default('').optional(),
   AWS_SES_SECRET: Joi.string().allow('').default('').optional(),
   AWS_SES_FROM_EMAIL: Joi.string().allow('').default('').optional(),
+  AWS_SQS_REGION: Joi.string().allow('').default('').optional(),
+  AWS_SQS_KEY: Joi.string().allow('').default('').optional(),
+  AWS_SQS_SECRET: Joi.string().allow('').default('').optional(),
 });

@@ -4,9 +4,9 @@ import { IError } from '@shared/error';
 export type InputSendSqsMessageDto = {
   QueueUrl: string;
   MessageBody: string;
-  DelaySeconds: number;
-  MessageAttributes: Record<string, { StringValue: string }>;
-  MessageSystemAttributes: Record<string, { StringValue: string }>;
+  DelaySeconds?: number;
+  MessageAttributes?: Record<string, { StringValue: string }>;
+  MessageSystemAttributes?: Record<string, { StringValue: string }>;
   MessageDeduplicationId: string;
   MessageGroupId: string;
 };

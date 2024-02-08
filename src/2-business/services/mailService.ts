@@ -1,7 +1,7 @@
 import { Either } from '@shared/either';
 import { IError } from '@shared/error';
 
-export type MailDriver = 'AWS-SES';
+export type MailChannel = 'AWS-SES';
 export type MailOptions = {
   to: string[];
   subject: string;
@@ -13,7 +13,7 @@ export type SendMailOutputDto = { messageId: string };
 export interface IMailService {
   send: (
     options: MailOptions,
-    driver?: MailDriver,
+    channel?: MailChannel,
   ) => Promise<Either<IError, SendMailOutputDto>>;
 }
 

@@ -1,8 +1,8 @@
 import { SendEmailCommand, SESClient } from '@aws-sdk/client-ses';
-import { failedSendMail } from '@business/errors/mail';
+import { failedSendMail, unknownSendMailChannel } from '@business/errors/mail';
 import {
   IMailService,
-  MailDriver,
+  MailChannel,
   MailOptions,
   SendMailOutputDto,
 } from '@business/services/mailService';
@@ -31,7 +31,7 @@ export class MailService implements IMailService {
     });
   }
 
-  private async sendViaAwsSes(
+  private async sendViaAwsSesChannel(
     options: MailOptions,
   ): Promise<Either<IError, SendMailOutputDto>> {
     try {
@@ -64,11 +64,11 @@ export class MailService implements IMailService {
 
   async send(
     options: MailOptions,
-    driver: MailDriver = 'AWS-SES',
+    channel: MailChannel = 'AWS-SES',
   ): Promise<Either<IError, SendMailOutputDto>> {
-    if (driver === 'AWS-SES') {
-      return this.sendViaAwsSes(options);
+    if (channel === 'AWS-SES') {
+      return this.sendViaAwsSesChannel(options);
     }
-    return left(failedSendMail);
+    return left(unknownSendMailChannel);
   }
 }

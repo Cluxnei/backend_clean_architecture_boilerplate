@@ -1,7 +1,10 @@
 import { IMailQueue } from '@business/queues/mailQueue';
-import { Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { MailChannel, MailOptions } from '@business/services/mailService';
-import { IAwsSqsService } from '@business/services/awsSqsService';
+import {
+  IAwsSqsService,
+  IAwsSqsServiceToken,
+} from '@business/services/awsSqsService';
 import { envOrThrow } from '@shared/env';
 import md5 from 'crypto-js/md5';
 import CryptoJS from 'crypto-js';
@@ -12,7 +15,9 @@ export class MailQueue implements IMailQueue {
     timestamp: true,
   });
 
-  constructor(private readonly awsSqsService: IAwsSqsService) {
+  constructor(
+    @Inject(IAwsSqsServiceToken) private readonly awsSqsService: IAwsSqsService,
+  ) {
     this.logger.debug('new queue instance');
   }
 

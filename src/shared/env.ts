@@ -1,6 +1,10 @@
 export const env = <T>(prop: string, defaultValue?: any): T | null =>
   (process.env[prop] as T | undefined) ?? defaultValue ?? null;
 
+export const setEnv = <T extends string>(prop: string, value: T): void => {
+  process.env[prop] = value;
+};
+
 export const envOrThrow = <T extends string>(prop: string): T => {
   if (prop in process.env) {
     return process.env[prop] as T;

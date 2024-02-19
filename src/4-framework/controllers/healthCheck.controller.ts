@@ -1,6 +1,9 @@
 import { Controller, Get, HttpCode, Logger, Res } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { GetHealthCheckStatusUseCase } from '@business/useCases/healthCheck/getHealthCheckStatusUseCase';
+import {
+  GetHealthCheckStatusUseCase,
+  OutputGetHealthCheckStatusDto,
+} from '@business/useCases/healthCheck/getHealthCheckStatusUseCase';
 import { Response } from 'express';
 import { sendUseCaseHttpResponse } from '@utils/response';
 

@@ -5,13 +5,14 @@ import { Either, left, right } from '@shared/either';
 import { bindGenericError, IError } from '@shared/error';
 
 export type InputGetHealthCheckStatusDto = undefined;
+export type OutputGetHealthCheckStatusOkDto = {
+  status: 'ok' | 'nok';
+  app_environment: string;
+  node_environment: string;
+};
 export type OutputGetHealthCheckStatusDto = Either<
   IError,
-  {
-    status: 'ok' | 'nok';
-    app_environment: string;
-    node_environment: string;
-  }
+  OutputGetHealthCheckStatusOkDto
 >;
 
 @Injectable({ scope: Scope.TRANSIENT })

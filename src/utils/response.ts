@@ -2,6 +2,7 @@ import { Either } from '@shared/either';
 import { handleErrorLog, IError } from '@shared/error';
 import { HttpStatus, Logger } from '@nestjs/common';
 import { Response } from 'express';
+import { CustomObject } from '@domain/types';
 
 export const sendUseCaseHttpResponse = <
   T extends Either<IError, any>,
@@ -10,7 +11,7 @@ export const sendUseCaseHttpResponse = <
   res: Response;
   loggerInstance?: Logger;
   statusCode?: HttpStatus;
-}): Response<T['value']> => {
+}): T['value'] => {
   const { resource, res, loggerInstance, statusCode = 200 } = options;
   if (resource.isLeft()) {
     handleErrorLog(resource.value, loggerInstance);
@@ -21,5 +22,5 @@ export const sendUseCaseHttpResponse = <
 
 export const mockExpressResponseObject: () => Partial<Response> = () => ({
   status: jest.fn().mockReturnThis(),
-  json: jest.fn(),
+  json: (value: any): any => jest.fn().mockReturnValue(value)(),
 });

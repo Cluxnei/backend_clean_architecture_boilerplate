@@ -18,7 +18,7 @@ export class MailService implements IMailService {
   });
 
   constructor() {
-    this.logger.debug('new service instance');
+    this.logger.debug('new instance');
   }
 
   private buildAwsSesClient(): SESClient {

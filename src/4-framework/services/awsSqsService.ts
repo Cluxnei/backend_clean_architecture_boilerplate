@@ -23,7 +23,7 @@ export class AwsSqsService implements IAwsSqsService {
   private sqsClient: SQSClient | null;
 
   constructor() {
-    this.logger.debug('new service instance');
+    this.logger.debug('new instance');
   }
 
   async sendMessage(

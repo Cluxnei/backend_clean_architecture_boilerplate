@@ -21,6 +21,6 @@ export class PrismaService extends PrismaClient {
           }
         : {},
     );
-    this.logger.debug('new service instance');
+    this.logger.debug('new instance');
   }
 }

@@ -1,9 +1,6 @@
 import { Controller, Get, HttpCode, Logger, Res } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import {
-  GetHealthCheckStatusUseCase,
-  OutputGetHealthCheckStatusDto,
-} from '@business/useCases/healthCheck/getHealthCheckStatusUseCase';
+import { GetHealthCheckStatusUseCase } from '@business/useCases/healthCheck/getHealthCheckStatusUseCase';
 import { Response } from 'express';
 import { sendUseCaseHttpResponse } from '@utils/response';
 
@@ -17,7 +14,7 @@ export class HealthCheckController {
   constructor(
     private readonly getHealthCheckStatusUseCase: GetHealthCheckStatusUseCase,
   ) {
-    this.logger.debug('new controller instance');
+    this.logger.debug('new instance');
   }
   @Get('/')
   @HttpCode(200)

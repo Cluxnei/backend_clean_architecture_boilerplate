@@ -12,7 +12,7 @@ export class HttpService implements IHttpService {
   });
 
   constructor(private readonly httpService: NestHttpService) {
-    this.logger.debug('new service instance');
+    this.logger.debug('new instance');
   }
 
   async post<T, U extends any>(

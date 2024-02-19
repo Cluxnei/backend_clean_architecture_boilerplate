@@ -15,7 +15,7 @@ export class LoggingInterceptor implements NestInterceptor {
   });
 
   constructor() {
-    this.logger.debug('new interceptor instance');
+    this.logger.debug('new instance');
   }
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {

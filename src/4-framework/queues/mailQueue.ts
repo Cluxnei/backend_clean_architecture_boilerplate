@@ -18,7 +18,7 @@ export class MailQueue implements IMailQueue {
   constructor(
     @Inject(IAwsSqsServiceToken) private readonly awsSqsService: IAwsSqsService,
   ) {
-    this.logger.debug('new queue instance');
+    this.logger.debug('new instance');
   }
 
   async add(input: MailOptions, channel?: MailChannel): Promise<void> {

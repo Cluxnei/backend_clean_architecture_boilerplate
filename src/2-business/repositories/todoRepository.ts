@@ -7,9 +7,10 @@ export type InputCreateTodoRepositoryDto = InputTodo;
 export type OutputCreateTodoRepositoryDto = Either<IError, ITodo>;
 
 // update
-export type InputUpdateTodoRepositoryDto = { id: string } & Partial<
-  Omit<InputTodo, 'top_secret_prop'>
->;
+export type InputUpdateTodoRepositoryDto = {
+  id: string;
+  data: Partial<InputTodo>;
+};
 export type OutputUpdateTodoRepositoryDto = Either<IError, ITodo>;
 
 // list

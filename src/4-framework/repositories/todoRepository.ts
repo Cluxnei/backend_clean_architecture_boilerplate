@@ -152,7 +152,7 @@ export class TodoRepository implements ITodoRepository {
             where: {
               id: input.id,
             },
-            data: input,
+            data: input.data,
           }),
         ),
       );

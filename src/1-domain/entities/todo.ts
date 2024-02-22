@@ -1,5 +1,5 @@
 export interface ITodo {
-  id: number;
+  id: string;
   title: string;
   description: string;
   completed: boolean;
@@ -8,4 +8,12 @@ export interface ITodo {
 
 export interface InputTodo extends ITodo {
   // custom stuff...
+}
+
+export class TodoEntity implements ITodo {
+  id: string;
+  title: string;
+  description: string;
+  completed: boolean;
+  top_secret_prop: string;
 }

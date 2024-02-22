@@ -16,6 +16,7 @@ export type OutputUpdateTodoRepositoryDto = Either<IError, ITodo>;
 export type InputListTodoRepositoryDto = {
   take: number;
   skip: number;
+  filter?: Partial<Record<keyof ITodo, string>>;
 };
 export type OutputListTodoRepositoryDto = Either<IError, ITodo[]>;
 
@@ -31,7 +32,7 @@ export type OutputFindByTodoRepositoryDto = Either<IError, ITodo>;
 
 // delete
 export type InputDeleteTodoRepositoryDto = { id: string };
-export type OutputDeleteTodoRepositoryDto = Either<IError, ITodo>;
+export type OutputDeleteTodoRepositoryDto = Either<IError, boolean>;
 
 export interface ITodoRepository {
   create: (
@@ -45,10 +46,10 @@ export interface ITodoRepository {
     input: InputFindByTodoRepositoryDto,
   ) => Promise<OutputFindByTodoRepositoryDto>;
   update: (
-    user: InputUpdateTodoRepositoryDto,
+    input: InputUpdateTodoRepositoryDto,
   ) => Promise<OutputUpdateTodoRepositoryDto>;
   delete: (
-    user: InputDeleteTodoRepositoryDto,
+    input: InputDeleteTodoRepositoryDto,
   ) => Promise<OutputDeleteTodoRepositoryDto>;
 }
 

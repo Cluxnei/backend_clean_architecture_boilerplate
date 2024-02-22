@@ -4,9 +4,11 @@ export interface ITodo {
   description: string;
   completed: boolean;
   top_secret_prop: string;
+  created_at?: Date;
+  updated_at?: Date | null;
 }
 
-export interface InputTodo extends ITodo {
+export interface InputTodo extends Omit<ITodo, 'id'> {
   // custom stuff...
 }
 
@@ -16,4 +18,6 @@ export class TodoEntity implements ITodo {
   description: string;
   completed: boolean;
   top_secret_prop: string;
+  created_at?: Date;
+  updated_at?: Date | null;
 }

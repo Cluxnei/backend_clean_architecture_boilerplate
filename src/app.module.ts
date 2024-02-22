@@ -9,6 +9,7 @@ import { registerHttp } from '@framework/config/http';
 import { HttpModule } from '@container/ioc/http.module';
 import { MailModule } from '@container/ioc/mail.module';
 import { AwsSqsModule } from '@container/ioc/awsSqs.module';
+import { TodoModule } from '@container/ioc/todo.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { AwsSqsModule } from '@container/ioc/awsSqs.module';
     HttpModule,
     AwsSqsModule,
     MailModule,
+    TodoModule,
   ],
   providers: [],
 })

@@ -74,6 +74,13 @@ export class TodoRepository implements ITodoRepository {
     input: InputDeleteTodoRepositoryDto,
   ): Promise<OutputDeleteTodoRepositoryDto> {
     try {
+      const todo = await this.findBy({
+        value: input.id,
+        type: 'id',
+      });
+      if (todo.isLeft()) {
+        return left(todo.value);
+      }
       return right(
         Boolean(
           await this.prismaService.todo.delete({
@@ -145,6 +152,13 @@ export class TodoRepository implements ITodoRepository {
     input: InputUpdateTodoRepositoryDto,
   ): Promise<OutputUpdateTodoRepositoryDto> {
     try {
+      const todo = await this.findBy({
+        value: input.id,
+        type: 'id',
+      });
+      if (todo.isLeft()) {
+        return left(todo.value);
+      }
       return right(
         plainToInstance(
           TodoEntity,

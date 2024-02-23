@@ -10,8 +10,9 @@ import {
 import { InputTodo, ITodo, TodoEntity } from '@domain/entities/todo';
 import { pick } from '@utils/object';
 
-export type InputUpdateTodoDto = Pick<ITodo, 'id'> &
-  Omit<InputTodo, 'created_at' | 'updated_at'>;
+export type InputUpdateTodoDto = Pick<ITodo, 'id'> & {
+  data: Omit<InputTodo, 'created_at' | 'updated_at'>;
+};
 export type OutputUpdateTodoDto = Either<IError, TodoEntity>;
 
 @Injectable()
@@ -30,7 +31,7 @@ export class UpdateTodoUseCase
   }
 
   async execute(input: InputUpdateTodoDto): Promise<OutputUpdateTodoDto> {
-    const updateInput: InputTodo = pick(input, [
+    const updateInput: InputTodo = pick(input.data, [
       'title',
       'description',
       'completed',
